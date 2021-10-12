@@ -43,6 +43,21 @@ class MyApp extends StatelessWidget {
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
       },
+      // Works when trying to access a route that is not in the routes named
+      // parameter. This is more used when you don't know future routes
+      // (Dynamic routes).
+
+      // onGenerateRoute: (settings) {
+      //   print('Settings ' + settings.arguments);
+      //   return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      // },
+
+      // Unknown Route is like a 404 page, when something goes wrong this
+      // named parameter comes into place.
+      onUnknownRoute: (settings) {
+        print('Unknown route settings ' + settings.arguments);
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      },
     );
   }
 }
